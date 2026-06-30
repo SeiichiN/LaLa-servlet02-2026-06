@@ -9,7 +9,7 @@
 <body>
 	<h1>数あてゲーム</h1>
 	<form action="Kazuate" method="post">
-		1～9を入力:<br>
+		1～99を入力:<br>
 		<input type="text" name="kazu"><br>
 		<input type="submit" value="送信">
 	</form>
