@@ -14,6 +14,7 @@
 		<input type="submit" value="送信">
 	</form>
 
+	<p><a href="start">新しくゲームを始める</a></p>
 
 
 </body>

@@ -11,6 +11,6 @@ String msg = (String) request.getAttribute("msg");
 </head>
 <body>
 	<p><%= msg %></p>
-	<p><a href="Kazuate?retry=yes">もう一度</a></p>
+	<p><a href="Kazuate">もう一度</a></p>
 </body>
 </html>
