@@ -41,7 +41,7 @@ public class KazuateServlet extends HttpServlet {
 			msg = "正解です";
 		}
 		request.setAttribute("msg", msg);
-		String url = "WEB-INF/jsp/result.jsp";
+		String url = "WEB-INF/jsp/kazuate.jsp";
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 

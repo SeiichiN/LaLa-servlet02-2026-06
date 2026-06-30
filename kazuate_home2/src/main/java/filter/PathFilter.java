@@ -24,11 +24,7 @@ public class PathFilter extends HttpFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String path = req.getServletPath();
 		if (path.startsWith("/start")) {
-			HttpSession session = req.getSession();
-			int com = (int) (Math.random() * 99) + 1;
-			session.setAttribute("com", com);
-			String url = "Kazuate";
-			request.getRequestDispatcher(url).forward(request, response);
+			request.getRequestDispatcher("Start").forward(request, response);
 			return;
 		}
 		chain.doFilter(request, response);
