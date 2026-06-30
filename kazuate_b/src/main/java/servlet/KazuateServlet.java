@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Random;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,31 +9,33 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import model.Health;
-import model.HealthCheckLogic;
-
-@WebServlet("/HealthCheck")
-public class HealthCheck extends HttpServlet {
+@WebServlet("/Kazuate")
+public class KazuateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "WEB-INF/jsp/healthCheck.jsp";
+		String url = "WEB-INF/jsp/kazuate.jsp";
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String weight = request.getParameter("weight");
-		String height = request.getParameter("height");
-		Health health = new Health();
-		health.setHeight(Double.parseDouble(height));
-		health.setWeight(Double.parseDouble(weight));
+		request.setCharacterEncoding("UTF-8");
+		Integer com = new Random().nextInt(9) + 1;
+		String you = request.getParameter("kazu");
+		String msg = "";
+		int user = Integer.parseInt(you);
+		if (user > com) {
+			msg = "大きすぎます";
+		} else if (user < com) {
+			msg = "小さすぎます";
+		} else {
+			msg = "正解です";
+		}
 		
-		HealthCheckLogic healthCheckLogic = new HealthCheckLogic();
-		healthCheckLogic.execute(health);
-		
-		request.setAttribute("health", health);
-		
-		String url = "WEB-INF/jsp/healthCheckResult.jsp";
+		request.setAttribute("msg", msg);
+		request.setAttribute("com", com);
+
+		String url = "WEB-INF/jsp/result.jsp";
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 
