@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import model.Kazu;
-import model.KazuLogic;
+import model.SetMsgLogic;
 
 @WebServlet("/Kazuate")
 public class KazuateServlet extends HttpServlet {
@@ -32,12 +32,11 @@ public class KazuateServlet extends HttpServlet {
 			return;
 		}
 		String you = request.getParameter("kazu");
-		String msg = "";
 		int user = Integer.parseInt(you);
 		kazu.setUser(user);
 		
-		KazuLogic kazuLogic = new KazuLogic();
-		kazuLogic.execute(kazu);
+		SetMsgLogic setMsgLogic = new SetMsgLogic();
+		setMsgLogic.execute(kazu);
 		
 		String url = "WEB-INF/jsp/kazuate.jsp";
 		request.getRequestDispatcher(url).forward(request, response);

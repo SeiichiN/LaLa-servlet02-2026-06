@@ -20,7 +20,7 @@ Kazu kazu = (Kazu) session.getAttribute("kazu");
 	<% if (kazu.getMsg() != null) { %>
 		<p><%= kazu.getMsg() %></p>
 	<% } %>
-	<p><a href="start">新しくゲームを始める</a></p>
+	<p><a href="Start">新しくゲームを始める</a></p>
 
 </body>
 </html>

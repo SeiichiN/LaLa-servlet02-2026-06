@@ -1,6 +1,6 @@
 package model;
 
-public class KazuLogic {
+public class SetMsgLogic {
 	public void execute(Kazu kazu) {
 		if (kazu.getUser() > kazu.getCom()) {
 			kazu.setMsg("大きすぎます");
