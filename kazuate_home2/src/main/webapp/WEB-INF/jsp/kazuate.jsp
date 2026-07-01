@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.Kazu" %>
 <%
-String startmsg = (String) request.getAttribute("startmsg");
-String msg = (String) request.getAttribute("msg");
+Kazu kazu = (Kazu) session.getAttribute("kazu");
 %>
 <!DOCTYPE html>
 <html>
@@ -17,14 +17,10 @@ String msg = (String) request.getAttribute("msg");
 		<input type="text" name="kazu"><br>
 		<input type="submit" value="送信">
 	</form>
-	<% if (msg != null) { %>
-		<p><%= msg %></p>
+	<% if (kazu.getMsg() != null) { %>
+		<p><%= kazu.getMsg() %></p>
 	<% } %>
 	<p><a href="start">新しくゲームを始める</a></p>
-	<% if (startmsg != null) { %>
-	  <p><%= startmsg %></p>
-	 <% } %>
-
 
 </body>
 </html>
