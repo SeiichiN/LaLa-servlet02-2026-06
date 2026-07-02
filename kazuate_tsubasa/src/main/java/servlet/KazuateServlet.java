@@ -9,19 +9,29 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/Start")
-public class StartServlet extends HttpServlet {
+@WebServlet("/Kazuate")
+public class KazuateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		int com = (int) (Math.random() * 99) + 1;
-		session.setAttribute("com", com);
-		String msg = "新しい数を設定しました";
+		int com = (int) session.getAttribute("com");
+		String you = request.getParameter("kazu");
+		int user = Integer.parseInt(you);
+		String msg = "";
+		if (user > com) {
+			msg = "大きすぎます";
+		} else if (user < com) {
+			msg = "小さすぎます";
+		} else {
+			msg = "正解です";
+		}
+
 		request.setAttribute("msg", msg);
+
 		String url = "WEB-INF/jsp/kazuate.jsp";
 		request.getRequestDispatcher(url).forward(request, response);
-
 	}
 
 }

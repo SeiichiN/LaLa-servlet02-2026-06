@@ -15,6 +15,11 @@ public class KazuateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		int com = (int) (Math.random() * 99) + 1;
+		session.setAttribute("com", com);
+		String msg = "新しい数を設定しました";
+		request.setAttribute("msg", msg);
 		String url = "WEB-INF/jsp/kazuate.jsp";
 		request.getRequestDispatcher(url).forward(request, response);
 	}
