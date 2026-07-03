@@ -1,0 +1,49 @@
+package servlet;
+
+import java.io.IOException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+@WebServlet("/Kazuate")
+public class KazuateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "WEB-INF/jsp/kazuate.jsp";
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+		
+		HttpSession session = request.getSession();
+		Integer com = (Integer)session.getAttribute("com");
+				
+
+		String you = request.getParameter("kazu");
+		String msg = "";
+		
+		int user = Integer.parseInt(you);
+		if (user > com) {
+			msg = "大きすぎます";
+		} else if (user < com) {
+			msg = "小さすぎます";
+		} else {
+			msg = "正解です";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("com", com);
+
+		String url = "WEB-INF/jsp/kazuate.jsp";
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
+}
