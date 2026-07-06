@@ -15,7 +15,7 @@ public class FruitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Fruit fruit = new Fruit("ぶどう", 700);
+		Fruit fruit = new Fruit("メロン", 700);
 		ServletContext application = this.getServletContext();
 		application.setAttribute("fruit", fruit);
 		RequestDispatcher d =
